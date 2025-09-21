@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Engineer Roadmap Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../navigation/navigation.css">
+</head>
+<body class="bg-slate-900 text-slate-200">
+    <div id="main-navigation-placeholder"></div>
+    <div class="main-container">
+        <header class="main-header">
+            <h1 class="main-title text-gradient">Cloud Engineer Roadmap</h1>
+            <p class="main-subtitle">Step-by-step pembelajaran untuk memulai petualangan kamu di dunia cloud. </p>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 pb-24">
+            <!-- Fitur Pencarian Baru -->
+            <div class="mb-12 max-w-lg mx-auto">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-slate-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <input type="text" id="search-input" placeholder="Cari jalur pembelajaran..." class="w-full pl-12 pr-4 py-3 bg-slate-800/60 border border-slate-700 rounded-full text-slate-200 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors duration-300">
+                </div>
+            </div>
+
+            <!-- Layout Grid Baru -->
+            <div id="learning-path-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Daftar Jalur Pembelajaran akan dirender oleh JavaScript di sini -->
+            </div>
+             <div id="no-results" class="text-center text-slate-400 py-16 hidden">
+                <h3 class="text-2xl font-bold text-slate-200">Tidak Ditemukan</h3>
+                <p>Maaf, tidak ada jalur pembelajaran yang cocok dengan pencarian Anda.</p>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Data Jalur Pembelajaran
+        const learningPaths = [
+            {
+                title: "Fase 1: Pengetahuan IT Dasar",
+                description: "Pelajari fondasi inti seperti Linux, jaringan, dan dasar-dasar pemrograman.",
+                icon: "https://api.iconify.design/ri:terminal-box-line.svg",
+                url: "/series/cloud-engineer/phase-one",
+                status: "active"
+            },
+            {
+                title: "Fase 2: Konsep Cloud Fundamental",
+                description: "Pahami model layanan cloud, model deployment, dan pilih penyedia cloud utama.",
+                icon: "https://api.iconify.design/ri:cloud-line.svg",
+                url: "cloud_roadmap_phase2.html",
+                status: "active"
+            },
+            {
+                title: "Fase 3: Infrastructure as Code (IaC)",
+                description: "Otomatisasi deployment infrastruktur dengan alat seperti Terraform.",
+                icon: "https://api.iconify.design/ri:code-box-line.svg",
+                url: "cloud_roadmap_phase3.html",
+                status: "active"
+            },
+            {
+                title: "Fase 4: Kontainer & Orkestrasi",
+                description: "Kuasai Docker dan Kubernetes untuk deployment aplikasi modern.",
+                icon: "https://api.iconify.design/ri:box-3-line.svg",
+                url: "cloud_roadmap_phase4.html",
+                status: "active"
+            },
+            {
+                title: "Fase 5: CI/CD & Praktik DevOps",
+                description: "Bangun pipeline otomatis untuk pengiriman dan deployment yang efisien.",
+                icon: "https://api.iconify.design/ri:git-merge-line.svg",
+                url: "cloud_roadmap_phase5.html",
+                status: "active"
+            },
+            {
+                title: "Fase 6: Monitoring, Logging, & Observabilitas",
+                description: "Pelajari cara memantau kesehatan aplikasi dan memecahkan masalah dengan cepat.",
+                icon: "https://api.iconify.design/ri:bar-chart-2-line.svg",
+                url: "cloud_roadmap_phase6.html",
+                status: "active"
+            },
+            {
+                title: "Fase 7: Keamanan Cloud",
+                description: "Integrasikan praktik keamanan di setiap lapisan arsitektur cloud Anda.",
+                icon: "https://api.iconify.design/ri:shield-keyhole-line.svg",
+                url: "cloud_roadmap_phase7.html",
+                status: "active"
+            },
+             {
+                title: "Roadmap Lengkap",
+                description: "Satu halaman mencakup semua fase dari roadmap Cloud Engineer.",
+                icon: "https://api.iconify.design/ri:road-map-line.svg",
+                url: "cloud_roadmap_all_phases.html",
+                status: "active"
+            },
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('learning-path-list');
+            const searchInput = document.getElementById('search-input');
+            const noResultsMessage = document.getElementById('no-results');
+
+            if (!container || typeof learningPaths === 'undefined') return;
+
+            // Fungsi untuk merender kartu
+            const renderLearningPaths = (paths) => {
+                container.innerHTML = ''; // Kosongkan container sebelum render
+                if (paths.length === 0) {
+                    noResultsMessage.classList.remove('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                }
+
+                paths.forEach(path => {
+                    const isAvailable = path.status === 'active';
+                    const link = isAvailable ? path.url : '#';
+
+                    const isUrl = path.icon.startsWith('http') || path.icon.startsWith('https');
+                    const iconHtml = isUrl
+                        ? `<img src="${path.icon}" alt="Ikon ${path.title}" class="w-14 h-14 object-contain" style="filter: invert(1);">`
+                        : `<span class="text-5xl">${path.icon}</span>`;
+                    
+                    const card = `
+                        <a href="${link}" class="card-link flex flex-col bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center transition-all duration-300 ${isAvailable ? 'hover:border-sky-500/50 hover:-translate-y-1' : 'opacity-50 cursor-not-allowed'}">
+                            <div class="flex-shrink-0 h-20 mx-auto flex items-center justify-center mb-4">
+                                ${iconHtml}
+                            </div>
+                            <div class="flex-grow flex flex-col">
+                                <h2 class="text-xl font-bold text-slate-100">${path.title}</h2>
+                                <p class="mt-2 text-sm text-slate-400 flex-grow">${path.description}</p>
+                            </div>
+                            <div class="mt-6">
+                                ${isAvailable ? `<span class="list-item-button bg-sky-500">Mulai Belajar</span>` : `<span class="list-item-button bg-slate-700 text-slate-400 coming-soon-animation">Segera Hadir</span>`}
+                            </div>
+                        </a>
+                    `;
+                    container.innerHTML += card;
+                });
+
+                anime({
+                    targets: '.coming-soon-animation',
+                    translateY: [
+                        { value: -5, duration: 200, easing: 'easeOutQuad' },
+                        { value: 0, duration: 800, easing: 'easeOutBounce' }
+                    ],
+                    opacity: [
+                        { value: 0.5, duration: 100, easing: 'linear' },
+                        { value: 1, duration: 900, easing: 'linear' }
+                    ],
+                    loop: true,
+                    delay: anime.stagger(100)
+                });
+            };
+
+            renderLearningPaths(learningPaths);
+
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredPaths = learningPaths.filter(path =>
+                    path.title.toLowerCase().includes(searchTerm) ||
+                    path.description.toLowerCase().includes(searchTerm)
+                );
+                renderLearningPaths(filteredPaths);
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="../../navigation/navigation.js"></script>
+</body>
+</html>

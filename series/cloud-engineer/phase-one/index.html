@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Engineer Roadmap - Fase 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .main-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .card-link {
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #e2e8f0;
+        }
+
+        .card-link:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200">
+    <div class="main-container relative min-h-screen">
+        <header class="main-header text-center pt-16 pb-12">
+            <h1 class="main-title text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-gradient">Cloud Engineer Roadmap - Fase Satu</h1>
+            <p class="main-subtitle mt-4 max-w-2xl mx-auto text-lg text-slate-400">
+                Di Fase satu ini kamu wajib belajar dasar-dasar IT.
+            </p>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 pb-24">
+            <!-- New introductory section -->
+            <section class="mb-12 text-center max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-100 mb-4">Mengapa Pengetahuan IT Dasar Penting?</h2>
+                <p class="text-lg md:text-xl text-slate-400 leading-relaxed mb-6">
+                    Meskipun kamu mungkin ingin langsung mempelajari AWS, GCP atau Azure, memiliki fondasi IT yang kuat sangat penting. Ini akan membantu kamu memahami cara kerja infrastruktur yang mendasari layanan cloud. Dan jika tanpa fondasi ini, kamu akan kesulitan memecahkan masalah saat ada kendala kedepannya.
+                </p>
+                <p class="text-lg md:text-xl text-slate-400 leading-relaxed font-semibold">
+                    Silakan pilih topik di bawah ini untuk memulai pelajaran kamu.
+                </p>
+            </section>
+            
+            <div id="learning-path-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Linux Administration -->
+                <a href="#linux" class="card-link flex flex-col bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center transition-all duration-300 hover:border-sky-500/50 hover:-translate-y-1">
+                    <div class="flex-shrink-0 h-20 mx-auto flex items-center justify-center mb-4">
+                        <span class="text-5xl">🐧</span>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h2 class="text-xl font-bold text-slate-100">Linux Administration</h2>
+                        <p class="mt-2 text-sm text-slate-400 flex-grow">Pelajari dasar-dasar sistem operasi Linux yang menjadi fondasi cloud computing.</p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="bg-sky-500 font-bold py-2 px-5 rounded-full block">Mulai Belajar</span>
+                    </div>
+                </a>
+
+                <!-- Virtual Machine -->
+                <a href="#vm" class="card-link flex flex-col bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center transition-all duration-300 hover:border-sky-500/50 hover:-translate-y-1">
+                    <div class="flex-shrink-0 h-20 mx-auto flex items-center justify-center mb-4">
+                        <span class="text-5xl">🖥️</span>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h2 class="text-xl font-bold text-slate-100">Virtual Machine</h2>
+                        <p class="mt-2 text-sm text-slate-400 flex-grow">Pahami cara kerja VM dan perannya dalam infrastruktur IT modern dan cloud.</p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="bg-sky-500 font-bold py-2 px-5 rounded-full block">Mulai Belajar</span>
+                    </div>
+                </a>
+
+                <!-- Networking Fundamentals -->
+                <a href="#networking" class="card-link flex flex-col bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center transition-all duration-300 hover:border-sky-500/50 hover:-translate-y-1">
+                    <div class="flex-shrink-0 h-20 mx-auto flex items-center justify-center mb-4">
+                        <span class="text-5xl">🌐</span>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h2 class="text-xl font-bold text-slate-100">Networking</h2>
+                        <p class="mt-2 text-sm text-slate-400 flex-grow">Pahami cara data mengalir di cloud, termasuk IP, DNS, dan firewall.</p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="bg-sky-500 font-bold py-2 px-5 rounded-full block">Mulai Belajar</span>
+                    </div>
+                </a>
+
+                <!-- Programming Skills -->
+                <a href="#programming" class="card-link flex flex-col bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center transition-all duration-300 hover:border-sky-500/50 hover:-translate-y-1">
+                    <div class="flex-shrink-0 h-20 mx-auto flex items-center justify-center mb-4">
+                        <span class="text-5xl">💻</span>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h2 class="text-xl font-bold text-slate-100">Programming</h2>
+                        <p class="mt-2 text-sm text-slate-400 flex-grow">Pelajari dasar-dasar coding untuk otomatisasi dan IaC.</p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="bg-sky-500 font-bold py-2 px-5 rounded-full block">Mulai Belajar</span>
+                    </div>
+                </a>
+
+                <!-- Database Knowledge -->
+                <a href="#databases" class="card-link flex flex-col bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center transition-all duration-300 hover:border-sky-500/50 hover:-translate-y-1">
+                    <div class="flex-shrink-0 h-20 mx-auto flex items-center justify-center mb-4">
+                        <span class="text-5xl">💾</span>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h2 class="text-xl font-bold text-slate-100">Database</h2>
+                        <p class="mt-2 text-sm text-slate-400 flex-grow">Kenali berbagai jenis basis data dan cara mengelolanya di cloud.</p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="bg-sky-500 font-bold py-2 px-5 rounded-full block">Mulai Belajar</span>
+                    </div>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
