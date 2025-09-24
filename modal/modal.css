@@ -1,0 +1,63 @@
+/* =================================================================
+ * GAYA POP-UP MODAL
+ * ================================================================= */
+
+/* Overlay latar belakang yang menutupi seluruh layar */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.7); /* bg-slate-900 dengan transparansi */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99; /* Pastikan di atas elemen lain */
+    display: none; /* Sembunyikan secara default */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Tampilkan overlay saat pop-up aktif */
+.modal-overlay.is-active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Kotak konten pop-up */
+.modal-content {
+    background-color: #1e293b; /* slate-800 */
+    border: 1px solid #334155; /* slate-700 */
+    border-radius: 0.75rem;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animasi saat pop-up muncul */
+.modal-overlay.is-active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Tombol untuk menutup pop-up */
+.modal-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #94a3b8; /* slate-400 */
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-close-button:hover {
+    color: #e2e8f0; /* slate-200 */
+}
